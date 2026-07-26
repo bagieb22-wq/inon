@@ -850,35 +850,34 @@
     <section class="contact" id="contact">
         <h2 class="section-title">השאר פרטים לבדיקת תיק חינם</h2>
         <div class="contact-form">
-            <!-- Formspree Integration -->
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <form onsubmit="sendToWhatsapp(event)">
                 <div class="form-group">
                     <label for="name">שם מלא</label>
-                    <input type="text" id="name" name="name" required placeholder="ישראל ישראלי">
+                    <input type="text" id="name" required placeholder="ישראל ישראלי">
                 </div>
                 <div class="form-group">
                     <label for="phone">טלפון</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="052-8124966">
+                    <input type="tel" id="phone" required placeholder="052-8124966">
                 </div>
                 <div class="form-group">
                     <label for="service">תחום התעניינות עיקרי</label>
-                    <select id="service" name="service">
-                        <option value="pension">תכנון פנסיוני / בדיקת תיק</option>
-                        <option value="life">ביטוח חיים ובריאות</option>
-                        <option value="gemel">קופות גמל / קרנות השתלמות</option>
-                        <option value="other">אחר</option>
+                    <select id="service">
+                        <option value="תכנון פנסיוני / בדיקת תיק">תכנון פנסיוני / בדיקת תיק</option>
+                        <option value="ביטוח חיים ובריאות">ביטוח חיים ובריאות</option>
+                        <option value="קופות גמל / קרנות השתלמות">קופות גמל / קרנות השתלמות</option>
+                        <option value="אחר">אחר</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="message">הודעה (רשות)</label>
-                    <textarea id="message" name="message" rows="4" placeholder="רשום עוד פרטים במידת הצורך..."></textarea>
+                    <textarea id="message" rows="4" placeholder="רשום עוד פרטים במידת הצורך..."></textarea>
                 </div>
                 <button type="submit" class="submit-btn">שלח פנייה לינון</button>
             </form>
         </div>
     </section>
 
-    <!-- WhatsApp Floating Icon -->
+    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/972528124966?text=%D7%94%D7%99%20%D7%99%D7%A0%D7%95%D7%9F,%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5" class="whatsapp-float" target="_blank" title="דבר איתי ב-WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -890,6 +889,23 @@
 
     <!-- Interactive Scripts -->
     <script>
+        // WhatsApp Direct Sending Function
+        function sendToWhatsapp(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const text = `היי ינון, מילאתי פרטים באתר:%0A` +
+                         `*שם:* ${encodeURIComponent(name)}%0A` +
+                         `*טלפון:* ${encodeURIComponent(phone)}%0A` +
+                         `*תחום:* ${encodeURIComponent(service)}%0A` +
+                         (message ? `*הודעה:* ${encodeURIComponent(message)}` : '');
+
+            window.open(`https://wa.me/972528124966?text=${text}`, '_blank');
+        }
+
         // Modal Control Functions
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
