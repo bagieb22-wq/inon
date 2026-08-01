@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ינון - סוכן ביטוח, פנסיה ופיננסים</title>
+    <title>ינון - מתכנן פיננסי וסוכן ביטוח אישי</title>
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,7 +40,9 @@
         body.high-contrast header,
         body.high-contrast .about,
         body.high-contrast .faq-item,
-        body.high-contrast .modal-content { background-color: #111 !important; color: #fff !important; border: 1px solid #fff; }
+        body.high-contrast .modal-content,
+        body.high-contrast .calculator-container,
+        body.high-contrast .why-us-card { background-color: #111 !important; color: #fff !important; border: 1px solid #fff; }
         body.large-text { font-size: 1.2rem; }
 
         .accessibility-btn {
@@ -151,42 +153,142 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
         .hero h1 {
             font-size: 2.8rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .hero .cta-btn-alt {
             background-color: var(--secondary-color);
             color: var(--text-dark);
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             border-radius: 30px;
             text-decoration: none;
             font-size: 1.1rem;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: transform 0.2s, background 0.3s;
             display: inline-block;
         }
 
-        .hero .cta-btn-alt:hover {
-            transform: translateY(-3px);
-            background-color: #e5c34e;
+        .hero .cta-btn-vcard {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background 0.3s;
+            display: inline-block;
         }
 
-        /* Services Section */
-        .services {
+        .hero .cta-btn-alt:hover, .hero .cta-btn-vcard:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Trust Badge Bar */
+        .trust-bar {
+            background: #ffffff;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+
+        .trust-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .trust-item i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background-color: #ffffff;
+            padding: 4rem 2rem;
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .calc-grid { grid-template-columns: 1fr; }
+        }
+
+        .calc-result {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .calc-result h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .calc-result .amount {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
@@ -208,6 +310,40 @@
             display: block;
             margin: 0.5rem auto 0;
             border-radius: 2px;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-us-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .why-us-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .why-us-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
         .services-grid {
@@ -267,7 +403,7 @@
             color: white;
         }
 
-        /* Modal Popup Styles */
+        /* Modals Popup */
         .modal {
             display: none;
             position: fixed;
@@ -292,12 +428,6 @@
             overflow-y: auto;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .close-modal {
@@ -307,35 +437,17 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--text-light);
-            transition: color 0.2s;
-        }
-
-        .close-modal:hover {
-            color: var(--primary-color);
         }
 
         .modal-title {
             color: var(--primary-color);
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-body h4 {
-            color: var(--accent-color);
-            margin: 1.2rem 0 0.5rem 0;
-            font-size: 1.1rem;
         }
 
         .modal-body ul {
             padding-right: 1.2rem;
             margin-bottom: 1rem;
-        }
-
-        .modal-body li {
-            margin-bottom: 0.4rem;
         }
 
         .modal-cta {
@@ -351,13 +463,37 @@
             border-radius: 6px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1rem;
+        }
+
+        /* Appointment Scheduling Section */
+        .booking-section {
+            padding: 4rem 2rem;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .calendar-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .calendar-inputs { grid-template-columns: 1fr; }
         }
 
         /* About Section */
         .about {
-            background-color: #ffffff;
             padding: 4rem 2rem;
+            background-color: #ffffff;
         }
 
         .about-container {
@@ -394,12 +530,7 @@
             margin-bottom: 1rem;
         }
 
-        .about-text p {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        /* Testimonials Section */
+        /* Testimonials */
         .testimonials {
             max-width: 1200px;
             margin: 4rem auto;
@@ -420,19 +551,14 @@
             border-top: 4px solid var(--accent-color);
         }
 
-        .testimonial-card p {
-            font-style: italic;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
         .testimonial-author {
             font-weight: 700;
             color: var(--primary-color);
             text-align: left;
+            margin-top: 1rem;
         }
 
-        /* FAQ Section */
+        /* FAQ */
         .faq {
             max-width: 800px;
             margin: 4rem auto;
@@ -454,7 +580,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #fff;
             color: var(--primary-color);
         }
 
@@ -497,11 +622,6 @@
             font-size: 1rem;
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
         .submit-btn {
             width: 100%;
             background-color: var(--primary-color);
@@ -519,49 +639,46 @@
             background-color: #082846;
         }
 
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
+        /* Floating Action Buttons */
+        .floating-container {
             position: fixed;
-            width: 60px;
-            height: 60px;
             bottom: 20px;
             left: 20px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            cursor: pointer;
             text-decoration: none;
-            transition: transform 0.3s;
+            transition: transform 0.2s;
+            border: none;
         }
 
-        .whatsapp-float:hover {
+        .floating-btn:hover {
             transform: scale(1.1);
         }
 
-        /* Footer */
+        .whatsapp-float { background-color: #25d366; }
+        .vcard-float { background-color: var(--primary-color); }
+
         footer {
             background-color: var(--primary-color);
             color: white;
             text-align: center;
             padding: 2rem 1rem;
             margin-top: 4rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .hero h1 {
-                font-size: 2.1rem;
-            }
         }
     </style>
 </head>
@@ -585,36 +702,102 @@
             <div class="logo">ינון <span>ביטוח ופיננסים</span></div>
             <nav>
                 <ul>
-                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#why-us">למה ינון?</a></li>
+                    <li><a href="#calculator">מחשבון חיסכון</a></li>
                     <li><a href="#services">שירותים</a></li>
-                    <li><a href="#testimonials">המלצות</a></li>
-                    <li><a href="#faq">שאלות נפוצות</a></li>
+                    <li><a href="#booking">תיאום פגישה</a></li>
+                    <li><a href="#about">אודות</a></li>
                     <li><a href="#contact">צור קשר</a></li>
                 </ul>
             </nav>
-            <a href="#contact" class="cta-btn">שיחת ייעוץ מתנה</a>
+            <a href="#booking" class="cta-btn">תיאום בדיקה חינם</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>מתכננים את העתיד הכלכלי והמשפחתי בראש שקט</h1>
-            <p>מומחה בביטוחי חיים, ניהול פנסיוני, קופות גמל ותכנון פיננסי מתקדם המותאם בדיוק למטרות שלך.</p>
-            <a href="#contact" class="cta-btn-alt">לתיאום פגישת בדיקה ללא עלות</a>
+            <h1>מתי בפעם האחרונה בדקתם כמה כסף אתם מפסידים בתיק הפנסיוני?</h1>
+            <p>רוב הישראלים משלמים דמי ניהול מופרזים ומחזיקים בכפילויות ביטוח מיותרות. ינון מעניק בדיקה מקיפה, שקופה ואובייקטיבית שתחסוך לכם אלפי שקלים.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="cta-btn-alt">לקביעת שיחת אבחון ללא עלות <i class="fa-solid fa-arrow-left"></i></a>
+                <button onclick="downloadVCard()" class="cta-btn-vcard"><i class="fa-solid fa-address-card"></i> שמור את ינון באנשי הקשר</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badge Bar -->
+    <div class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item"><i class="fa-solid fa-shield-check"></i> סוכן מורשה מטעם משרד האוצר</div>
+            <div class="trust-item"><i class="fa-solid fa-handshake"></i> עבודה מול כל חברות הביטוח</div>
+            <div class="trust-item"><i class="fa-solid fa-user-check"></i> ליווי אישי בגובה העיניים</div>
+        </div>
+    </div>
+
+    <!-- Interactive Savings & Retirement Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <h2 class="section-title">מחשבון חיסכון ופרישה אינטראקטיבי</h2>
+        <div class="calculator-container">
+            <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-light);">בדקו כמה תוכלו לצבור עד גיל הפרישה (הערכה לפי תשואה ממוצעת משוערת של 5% בשנה):</p>
+            <div class="calc-grid">
+                <div class="form-group">
+                    <label for="calc-age">גיל נוכחי (בשנים)</label>
+                    <input type="number" id="calc-age" value="35" min="18" max="66" oninput="calculateSavings()">
+                </div>
+                <div class="form-group">
+                    <label for="calc-monthly">הפקדה חודשית (בש"ח)</label>
+                    <input type="number" id="calc-monthly" value="1500" min="100" step="100" oninput="calculateSavings()">
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="calc-current">צבירה קיימת בקרן (בש"ח)</label>
+                    <input type="number" id="calc-current" value="100000" min="0" step="5000" oninput="calculateSavings()">
+                </div>
+            </div>
+
+            <div class="calc-result">
+                <h3>סכום הצבירה המשוער בגיל 67:</h3>
+                <div class="amount" id="result-amount">₪0</div>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">שיפור דמי הניהול והתאמת מסלול ההשקעה יכולים להגדיל סכום זה במאות אלפי שקלים!</p>
+                <a href="#booking" class="cta-btn-alt" style="background-color: var(--secondary-color); color: var(--text-dark); text-decoration: none; padding: 0.6rem 1.2rem; font-size: 1rem;">לבדיקת אופטימיזציה לחיסכון שלך</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us" id="why-us">
+        <h2 class="section-title">למה לעבוד עם ינון ולא מול מוקדי הביטוח?</h2>
+        <div class="why-us-grid">
+            <div class="why-us-card">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>אובייקטיביות מלאה</h3>
+                <p>חברות הביטוח ימכרו לכם רק את המוצר שלהן. ינון עובד מול כל החברות בשוק ומביא לכם את ההצעה המשתלמת ביותר.</p>
+            </div>
+
+            <div class="why-us-card">
+                <i class="fa-solid fa-phone-slash"></i>
+                <h3>בלי להמתין במוקד</h3>
+                <p>שוכחים מחדרי ההמתנה של חברות הביטוח. יש לכם איש קשר ישיר ב-WhatsApp ובטלפון האישי לכל שאלה ותביעה.</p>
+            </div>
+
+            <div class="why-us-card">
+                <i class="fa-solid fa-coins"></i>
+                <h3>חיסכון כספי מורגש</h3>
+                <p>איתור כפילויות ביטוח, הוזלת דמי ניהול והתאמת מסלולי השקעה להגדלת הקצבה בפרישה.</p>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="section-title">התמחויות ושירותים</h2>
+        <h2 class="section-title">תחומי התמחות</h2>
         <div class="services-grid">
             
             <div class="service-card">
                 <div>
                     <i class="fa-solid fa-heart-pulse service-icon"></i>
                     <h3>ביטוח חיים ובריאות</h3>
-                    <p>הגנה כלכלית מקיפה למשפחה בכל תרחיש, התאמת הפוליסה במדויק לצורכי המשפחה ללא כפילויות תשלום.</p>
+                    <p>הגנה כלכלית מקיפה למשפחה, ביטול כפילויות ביטוח והבטחת הכיסוי הרפואי הטוב ביותר.</p>
                 </div>
                 <button class="more-info-btn" onclick="openModal('modal-life')">למידע מפורט <i class="fa-solid fa-arrow-left"></i></button>
             </div>
@@ -623,7 +806,7 @@
                 <div>
                     <i class="fa-solid fa-piggy-bank service-icon"></i>
                     <h3>תכנון וניהול פנסיוני</h3>
-                    <p>בדיקה והוזלת דמי ניהול, מקסום תשואות והבטחת קצבה מרבית לקראת פרישה לגמלאות.</p>
+                    <p>הורדת דמי ניהול, התאמת מסלולי תשואה ומקסום הון לקראת גיל פרישה.</p>
                 </div>
                 <button class="more-info-btn" onclick="openModal('modal-pension')">למידע מפורט <i class="fa-solid fa-arrow-left"></i></button>
             </div>
@@ -632,7 +815,7 @@
                 <div>
                     <i class="fa-solid fa-chart-line service-icon"></i>
                     <h3>קופות גמל והשתלמות</h3>
-                    <p>אפיקי השקעה פטורים ממס, התאמת מסלולי השקעה לרמת הסיכון המתאימה לך לצבירת הון נזיל.</p>
+                    <p>ניצול הטבות מס ייחודיות לשכירים ועצמאיים, וצבירת חיסכון נזיל ומרוויח.</p>
                 </div>
                 <button class="more-info-btn" onclick="openModal('modal-gemel')">למידע מפורט <i class="fa-solid fa-arrow-left"></i></button>
             </div>
@@ -641,7 +824,7 @@
                 <div>
                     <i class="fa-solid fa-shield-halved service-icon"></i>
                     <h3>אובדן כושר עבודה</h3>
-                    <p>הבטחת הכנסה שוטפת במקרה של חוסר יכולת לעבוד, תוך שמירה על רמת החיים של המשפחה.</p>
+                    <p>הבטחת ההכנסה החודשית של המשפחה בכל מקרה של פגיעה או מחלה שמונעת עבודה.</p>
                 </div>
                 <button class="more-info-btn" onclick="openModal('modal-disability')">למידע מפורט <i class="fa-solid fa-arrow-left"></i></button>
             </div>
@@ -649,135 +832,40 @@
         </div>
     </section>
 
-    <!-- Modals for Detailed Insurance Info -->
-    
-    <!-- Modal: Life & Health -->
-    <div class="modal" id="modal-life">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-life')">&times;</span>
-            <div class="modal-title">
-                <i class="fa-solid fa-heart-pulse"></i>
-                ביטוח חיים ובריאות - פירוט מלא
-            </div>
-            <div class="modal-body">
-                <p>תיק הביטוח הבריאותי והחיים של המשפחה נועד לשמור על היציבות הכלכלית במצבי קיצון ולאפשר גישה לרפואה המתקדמת ביותר בעולם.</p>
-                
-                <h4>מה כולל ביטוח חיים (ריסק)?</h4>
-                <ul>
-                    <li>סכום כסף חד-פעמי המשולם למשפחה/מוטבים במקרה של פטירת המבוטח.</li>
-                    <li>הבטחת עתיד הילדים, כיסוי משכנתה ושמירה על רמת החיים.</li>
-                </ul>
-
-                <h4>מה כולל ביטוח בריאות פרטי?</h4>
-                <ul>
-                    <li><strong>ניתוחים וטיפולים בישראל ובחו"ל:</strong> בחירת המנתח והבית חולים הפרטי.</li>
-                    <li><strong>תרופות מחוץ לסל:</strong> כיסוי לתרופות מצילות ומאריכות חיים שאינן בסל הבריאות.</li>
-                    <li><strong>השתלות וטיפולים מיוחדים בחו"ל:</strong> מימון מלא של פרוצידורות רפואיות נדירות.</li>
-                    <li><strong>מחלות קשות:</strong> פיצוי כספי מהיר במקרה של גילוי מחלה קשה.</li>
-                </ul>
-
-                <h4>מה ינון בודק בתיק שלך?</h4>
-                <p>הסרת כפילויות ביטוח מיותרות (ביטוח כפול דרך קופת חולים/פוליסה פרטית) והוזלת הפרמיה החודשית מבלי לפגוע בכיסוי האיכותי.</p>
-            </div>
-            <div class="modal-cta">
-                <button onclick="closeModal('modal-life'); location.href='#contact';">רוצה לבדוק את פוליסת הבריאות שלי</button>
-            </div>
+    <!-- Appointment Booking Section -->
+    <section class="booking-section" id="booking">
+        <h2 class="section-title">תיאום שיחת אבחון ביומן</h2>
+        <div class="booking-container">
+            <p style="text-align: center; margin-bottom: 1.5rem; font-weight: 500;">בחר את היום והשעה הנוחים לך לשיחת ייעוץ קצרה (10 דקות) ללא עלות:</p>
+            <form onsubmit="bookAppointment(event)">
+                <div class="form-group">
+                    <label for="book-name">שם מלא</label>
+                    <input type="text" id="book-name" required placeholder="ישראל ישראלי">
+                </div>
+                <div class="form-group">
+                    <label for="book-phone">טלפון ליצירת קשר</label>
+                    <input type="tel" id="book-phone" required placeholder="052-8124966">
+                </div>
+                <div class="calendar-inputs">
+                    <div class="form-group">
+                        <label for="book-date">תאריך מבוקש</label>
+                        <input type="date" id="book-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-time">שעה מועדפת</label>
+                        <select id="book-time" required>
+                            <option value="09:00">09:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: var(--accent-color);">קבע פגישה ביומן <i class="fa-solid fa-calendar-check"></i></button>
+            </form>
         </div>
-    </div>
-
-    <!-- Modal: Pension -->
-    <div class="modal" id="modal-pension">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-pension')">&times;</span>
-            <div class="modal-title">
-                <i class="fa-solid fa-piggy-bank"></i>
-                תכנון וניהול פנסיוני - פירוט מלא
-            </div>
-            <div class="modal-body">
-                <p>קרן הפנסיה היא הנכס הפיננסי הגדול ביותר שתצברו במהלך חייכם. תכנון נכון בגיל צעיר יכול להיות שווה מאות אלפי שקלים נוספים בקצבת הפרישה.</p>
-
-                <h4>מרכיבי קרן הפנסיה:</h4>
-                <ul>
-                    <li><strong>חיסכון לפרישה:</strong> צבירה חודשית של הון שישולם כקצבה חודשית מגיל הפרישה.</li>
-                    <li><strong>כיסוי נכות (אובדן כושר עבודה):</strong> הגנה על ההכנסה החודשית במקרה של מחלה או תאונה.</li>
-                    <li><strong>כיסוי שאירים:</strong> הגנה כספית למשפחה (בן/בת זוג וילדים) במקרה של פטירה.</li>
-                </ul>
-
-                <h4>מה כוללת הבדיקה הפנסיונית של ינון?</h4>
-                <ul>
-                    <li><strong>הוזלת דמי ניהול:</strong> הפחתת העמלות הנגבות מההפקדה והצבירה.</li>
-                    <li><strong>התאמת מסלולי השקעה:</strong> בחירת מסלול השקעה מותאם גיל וסיכון להגדלת התשואה.</li>
-                    <li><strong>איחוד חשבונות פנסיה:</strong> איתור ומיזוג קרנות פנסיה קודמות ופזורות ממעסיקים קודמים.</li>
-                </ul>
-            </div>
-            <div class="modal-cta">
-                <button onclick="closeModal('modal-pension'); location.href='#contact';">לתיאום בדיקת פנסיה מקיפה</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Gemel & Keren Hשתלמות -->
-    <div class="modal" id="modal-gemel">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-gemel')">&times;</span>
-            <div class="modal-title">
-                <i class="fa-solid fa-chart-line"></i>
-                קופות גמל וקרנות השתלמות - פירוט מלא
-            </div>
-            <div class="modal-body">
-                <p>אפיקי השקעה מובילים המציעים יתרונות מס ייחודיים ונזילות לחיסכון לטווח בינוני וארוך.</p>
-
-                <h4>1. קרן השתלמות (אפיק החיסכון הטוב בישראל):</h4>
-                <ul>
-                    <li><strong>פטור מלא ממס רווחי הון:</strong> לאחר 6 שנים (או 3 שנים למטרת השתלמות/גיל פרישה).</li>
-                    <li><strong>מיועד לשכירים ועצמאיים:</strong> הטבות מס מוכרות בהפקדה.</li>
-                    <li>אפשרות לקבלת הלוואות בתנאים מועדפים על חשבון הכספים הצבורים.</li>
-                </ul>
-
-                <h4>2. קופת גמל להשקעה:</h4>
-                <ul>
-                    <li><strong>נזילות מלאה:</strong> אפשרות למשוך את הכסף בכל עת.</li>
-                    <li>תקרת הפקדה שנתית נקבעת על פי חוק.</li>
-                    <li><strong>בונוס פרישה:</strong> משיכת הכספים כקצבה חודשית בגיל 60 מעניקה פטור מלא ממס!</li>
-                </ul>
-
-                <h4>3. תיקון 190 (קופת גמל):</h4>
-                <ul>
-                    <li>פתרון מצוין לבעלי הון פנוי בגילאי 60 ומעלה להשקעה בשוק ההון עם מס מופחת (15% נומינלי בלבד) והעברה בין-דורית קלה.</li>
-                </ul>
-            </div>
-            <div class="modal-cta">
-                <button onclick="closeModal('modal-gemel'); location.href='#contact';">לתכנון חיסכון וקרן השתלמות</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Disability Insurance -->
-    <div class="modal" id="modal-disability">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-disability')">&times;</span>
-            <div class="modal-title">
-                <i class="fa-solid fa-shield-halved"></i>
-                אובדן כושר עבודה - פירוט מלא
-            </div>
-            <div class="modal-body">
-                <p>היכולת שלך להשתכר ולעבוד היא המנוע הכלכלי של כל המשפחה. ביטוח אובדן כושר עבודה מבטיח שגם אם תתרחש תאונה או מחלה שתמנע ממך לעבוד, רמת החיים שלך ושל משפחתך לא תיפגע.</p>
-
-                <h4>עיקרי הכיסוי:</h4>
-                <ul>
-                    <li><strong>קצבה חודשית חלופית:</strong> תשלום חודשי של עד 75% מהשכר/ההכנסה הממוצעת שלך ברוטו.</li>
-                    <li><strong>שחרור מתשלום פרמיות:</strong> חברת הביטוח משלמת עבורך את ההפרשות לפנסיה ולביטוחים בזמן אובדן כושר העבודה.</li>
-                    <li><strong>התאמה מקצועית:</strong> כיסוי המבוסס על המקצוע והעיסוק הספציפי שלך, ולא כל עבודה חלופית.</li>
-                </ul>
-
-                <h4>למי זה קריטי?</h4>
-                <p>עבור עצמאיים ושכירים כאחד, שרוצים להבטיח את פרנסת המשפחה גם במקרים של נכות זמנית או קבועה.</p>
-            </div>
-            <div class="modal-cta">
-                <button onclick="closeModal('modal-disability'); location.href='#contact';">לבדיקת הכיסוי לאובדן כושר עבודה</button>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -793,16 +881,16 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <h2 class="section-title">מה הלקוחות אומרים</h2>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">לקוחות ממליצים</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <p>"ינון עשה לי בדיקה מקיפה בתיק הפנסיוני וגילה שאני משלם דמי ניהול מופרזים. תוך שבוע הוא חסך לי מאות שקלים בחודש!"</p>
                 <div class="testimonial-author">— דוד מ., תל אביב</div>
             </div>
             <div class="testimonial-card">
-                <p>"הגעתי לינון כדי להסדיר ביטוח חיים למשפחה. הסביר לי בסבלנות בגובה העיניים, בלי מילים מתוסבכות. שירות יוצא מן הכלל."</p>
+                <p>"הגעתי לינון כדי להסדיר ביטוח חיים למשפחה. הסביר לי בסבלנות בגובה העיניים. שירות יוצא מן הכלל."</p>
                 <div class="testimonial-author">— רונית ש., ראשון לציון</div>
             </div>
             <div class="testimonial-card">
@@ -812,8 +900,8 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
+    <!-- FAQ -->
+    <section class="faq">
         <h2 class="section-title">שאלות נפוצות</h2>
         
         <div class="faq-item">
@@ -835,21 +923,11 @@
                 דמי הניהול, מסלולי ההשקעה והצרכים המשפחתיים משתנים עם השנים. בדיקה תקופתית מבטיחה שתקבלו את התשואה המרבית ותשלמו את המינימום הנדרש.
             </div>
         </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <span>איך מתבצע תהליך העבודה מול ינון?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-                ממלאים פרטים בטופס או בוואטסאפ, מפיקים דוח מסלקה פנסיונית באיזורך, מקיימים שיחת אבחון קצרה ומקבלים דוח המלצות מותאם אישית.
-            </div>
-        </div>
     </section>
 
     <!-- Contact Form Section -->
     <section class="contact" id="contact">
-        <h2 class="section-title">השאר פרטים לבדיקת תיק חינם</h2>
+        <h2 class="section-title">השאר פרטים ונחזור אליך</h2>
         <div class="contact-form">
             <form onsubmit="sendToWhatsapp(event)">
                 <div class="form-group">
@@ -869,96 +947,120 @@
                         <option value="אחר">אחר</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="message">הודעה (רשות)</label>
-                    <textarea id="message" rows="4" placeholder="רשום עוד פרטים במידת הצורך..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">שלח פנייה לינון</button>
+                <button type="submit" class="submit-btn">שלח פנייה מהירה לינון</button>
             </form>
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/972528124966?text=%D7%94%D7%99%20%D7%99%D7%A0%D7%95%D7%9F,%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5" class="whatsapp-float" target="_blank" title="דבר איתי ב-WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- Floating Action Buttons -->
+    <div class="floating-container">
+        <button onclick="downloadVCard()" class="floating-btn vcard-float" title="שמור איש קשר">
+            <i class="fa-solid fa-address-card"></i>
+        </button>
+        <a href="https://wa.me/972528124966?text=%D7%94%D7%99%20%D7%99%D7%A0%D7%95%D7%9F,%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5" class="floating-btn whatsapp-float" target="_blank" title="דבר איתי ב-WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 ינון - סוכן ביטוח ופיננסים | כל הזכויות שמורות</p>
     </footer>
 
-    <!-- Interactive Scripts -->
     <script>
-        // WhatsApp Direct Sending Function
+        // Interactive Calculator Function
+        function calculateSavings() {
+            const age = parseFloat(document.getElementById('calc-age').value) || 35;
+            const monthly = parseFloat(document.getElementById('calc-monthly').value) || 0;
+            const current = parseFloat(document.getElementById('calc-current').value) || 0;
+
+            const years = Math.max(0, 67 - age);
+            const months = years * 12;
+            const annualRate = 0.05; // 5% annual estimated yield
+            const monthlyRate = Math.pow(1 + annualRate, 1/12) - 1;
+
+            // Compound interest calculation
+            let futureValueCurrent = current * Math.pow(1 + annualRate, years);
+            let futureValueMonthly = 0;
+            if (monthlyRate > 0) {
+                futureValueMonthly = monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+            }
+
+            const total = Math.round(futureValueCurrent + futureValueMonthly);
+            document.getElementById('result-amount').innerText = '₪' + total.toLocaleString('he-IL');
+        }
+
+        // Initialize calculator on page load
+        window.addEventListener('DOMContentLoaded', calculateSavings);
+
+        // Function to Download VCard (.vcf file)
+        function downloadVCard() {
+            const vcardData = 
+                "BEGIN:VCARD\n" +
+                "VERSION:3.0\n" +
+                "N:ביטוח ופיננסים;ינון;;;\n" +
+                "FN:ינון - סוכן ביטוח ופיננסים\n" +
+                "ORG:ינון ביטוח ופיננסים\n" +
+                "TITLE:סוכן ביטוח ומתכנן פיננסי\n" +
+                "TEL;TYPE=CELL,VOICE:+972528124966\n" +
+                "NOTE:סוכן ביטוח, פנסיה, קופות גמל וביטוח חיים\n" +
+                "END:VCARD";
+
+            const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', 'ינון_סוכן_ביטוח.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Send Appointment Request via WhatsApp
+        function bookAppointment(e) {
+            e.preventDefault();
+            const name = document.getElementById('book-name').value;
+            const phone = document.getElementById('book-phone').value;
+            const date = document.getElementById('book-date').value;
+            const time = document.getElementById('book-time').value;
+
+            const text = `היי ינון, אני רוצה לקבוע פגישה ביומן:%0A` +
+                         `*שם:* ${encodeURIComponent(name)}%0A` +
+                         `*טלפון:* ${encodeURIComponent(phone)}%0A` +
+                         `*תאריך מבוקש:* ${encodeURIComponent(date)}%0A` +
+                         `*שעה:* ${encodeURIComponent(time)}`;
+
+            window.open(`https://wa.me/972528124966?text=${text}`, '_blank');
+        }
+
+        // Send Contact Form via WhatsApp
         function sendToWhatsapp(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
 
             const text = `היי ינון, מילאתי פרטים באתר:%0A` +
                          `*שם:* ${encodeURIComponent(name)}%0A` +
                          `*טלפון:* ${encodeURIComponent(phone)}%0A` +
-                         `*תחום:* ${encodeURIComponent(service)}%0A` +
-                         (message ? `*הודעה:* ${encodeURIComponent(message)}` : '');
+                         `*תחום:* ${encodeURIComponent(service)}`;
 
             window.open(`https://wa.me/972528124966?text=${text}`, '_blank');
         }
 
-        // Modal Control Functions
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        // Close modal when clicking outside of modal content
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
-
-        // FAQ Accordion Toggle
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            const isVisible = answer.style.display === 'block';
-            
-            document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.faq-question i').forEach(el => el.className = 'fa-solid fa-chevron-down');
-            
-            if (!isVisible) {
-                answer.style.display = 'block';
-                element.querySelector('i').className = 'fa-solid fa-chevron-up';
-            }
-        }
-
-        // Accessibility Menu Toggles
+        // Accessibility Menu
         function toggleAccessibilityMenu() {
             const menu = document.getElementById('accessibilityMenu');
             menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
         }
+        function toggleGrayscale() { document.body.classList.toggle('grayscale'); }
+        function toggleHighContrast() { document.body.classList.toggle('high-contrast'); }
+        function toggleLargeText() { document.body.classList.toggle('large-text'); }
+        function resetAccessibility() { document.body.classList.remove('grayscale', 'high-contrast', 'large-text'); }
 
-        function toggleGrayscale() {
-            document.body.classList.toggle('grayscale');
-        }
-
-        function toggleHighContrast() {
-            document.body.classList.toggle('high-contrast');
-        }
-
-        function toggleLargeText() {
-            document.body.classList.toggle('large-text');
-        }
-
-        function resetAccessibility() {
-            document.body.classList.remove('grayscale', 'high-contrast', 'large-text');
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
         }
     </script>
-
 </body>
 </html>
